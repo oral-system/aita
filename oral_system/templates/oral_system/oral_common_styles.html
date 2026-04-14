@@ -1,0 +1,156 @@
+<style>
+    /* ============================================================
+       1. 通用變數定義 (CSS Variables)
+       ============================================================ */
+    :root {
+        --oral-bg: #f5f5f5;
+        --oral-surface: rgba(0, 0, 0, 0.03);
+        --oral-border: #cccccc;
+        --oral-border-subtle: #dddddd;
+        --oral-text: #111111;
+        --oral-text-muted: #666666;
+        --oral-text-subtle: #999999;
+        --oral-heading: #222222;
+        --oral-select-bg: #ffffff;
+        --oral-select-text: #111111;
+        --oral-select-border: #999999;
+        --oral-modal-bg: #f0f2f5;
+        --oral-modal-header-bg: #ffffff;
+        --oral-code-bg: #ffffff;
+        --oral-code-border: #cccccc;
+        --oral-btn-primary: #007ba1;
+        --oral-btn-primary-hover: #006d8a;
+        --oral-link: #0077cc;
+        --oral-drop-zone-bg: #e0e0e0;
+        --oral-drop-zone-border: #999999;
+        --oral-material-item-border: #dddddd;
+        --oral-material-bg: #ffffff;
+        /* 來自第二段的擴充變數 */
+        --oral-title-border: #111111;
+        --oral-btn-bg: #ffffff;
+    }
+
+    /* 深色模式切換邏輯 */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --oral-bg: #1a1a1a;
+            --oral-surface: rgba(255, 255, 255, 0.04);
+            --oral-border: #444444;
+            --oral-border-subtle: #444444;
+            --oral-text: #e8e8e8;
+            --oral-text-muted: #aaaaaa;
+            --oral-text-subtle: #777777;
+            --oral-heading: #eeeeee;
+            --oral-select-bg: #222222;
+            --oral-select-text: #ffffff;
+            --oral-select-border: #666666;
+            --oral-modal-bg: #2a2a2a;
+            --oral-modal-header-bg: #333333;
+            --oral-code-bg: #1e1e1e;
+            --oral-code-border: #444444;
+            --oral-btn-primary: #0096c7;
+            --oral-btn-primary-hover: #0077a8;
+            --oral-link: #4db8ff;
+            --oral-drop-zone-bg: #333333;
+            --oral-drop-zone-border: #666666;
+            --oral-material-item-border: #444444;
+            --oral-material-bg: #2a2a2a;
+            /* 來自第二段的擴充變數 */
+            --oral-title-border: #e8e8e8;
+            --oral-btn-bg: #2e2e2e;
+        }
+    }
+
+    /* ============================================================
+       2. 通用基礎佈局 (Common Layout)
+       ============================================================ */
+    .oral-container { 
+        padding: 20px 40px; 
+        max-width: 1400px; 
+        margin: 0 auto; 
+    }
+
+    /* 通用按鈕基礎 */
+    .button, .round-btn, .pill-button {
+        cursor: pointer;
+        transition: all 0.2s;
+        font-family: inherit;
+    }
+
+    /* 通用文字顏色 */
+    .oral-text-color { color: var(--oral-text); }
+	/* ============================================================
+       強化的 Modal (Dialog) 樣式
+       ============================================================ */
+    dialog {
+        width: 90%;
+        max-width: 800px; /* 強制最大寬度 */
+        padding: 0;
+        border: none;
+        border-radius: 12px;
+        background: var(--oral-modal-bg);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        color: var(--oral-text);
+        overflow: hidden; /* 確保內容不會超出圓角 */
+    }
+
+    /* 讓視窗在畫面正中間 */
+    dialog::backdrop {
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(3px); /* 背景稍微模糊，更有質感 */
+    }
+
+    /* Modal 標題區 */
+    .modal-header {
+        padding: 20px 25px;
+        background: var(--oral-modal-header-bg);
+        border-bottom: 1px solid var(--oral-border-subtle);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .modal-header h2 {
+        margin: 0;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    /* 內容區 */
+    .modal-content, .material-modal-body {
+		padding: 25px;
+		display: flex;
+		flex-direction: column;
+		align-items: stretch; /* 讓內部的 div 撐開 */
+	}
+
+	/* 底部按鈕區塊的底色與對齊 */
+	.modal-footer-row, .modal-btn-row {
+		background: rgba(0, 0, 0, 0.1); /* 稍微深一點的背景區隔 */
+		padding: 15px 25px;
+		display: flex;
+		justify-content: center; /* 按鈕群組水平置中 */
+		gap: 20px;
+		border-top: 1px solid var(--oral-border-subtle);
+		margin: 0 -25px -25px -25px; /* 抵消掉 padding 讓背景色貼邊 */
+	}	
+
+    /* 調整按鈕大小一致 */
+    .round-btn {
+        min-width: 100px;
+        padding: 10px 25px;
+        border-radius: 50px;
+        cursor: pointer;
+        font-weight: bold;
+        border: none;
+    }
+
+    /* 修正關閉按鈕 (X) */
+    .modal-close {
+        cursor: pointer;
+        font-size: 28px;
+        line-height: 1;
+        opacity: 0.6;
+    }
+    .modal-close:hover { opacity: 1; }
+</style>

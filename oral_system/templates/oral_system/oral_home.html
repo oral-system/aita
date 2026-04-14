@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block body %}
+{% include "oral_system/oral_common_styles.html" %}
+
+<style>
+    /* 1. 頁面專屬變數補充 (若 common 內沒有則以此處為主) */
+    :root {
+        --oral-btn-hover-shadow: rgba(0, 0, 0, 0.1);
+        --oral-wrapper-padding: 40px;
+    }
+
+    /* 2. 修正 DMOJ 原有的內容間距衝突 */
+    #content {
+        padding: 0 !important; /* 去除 DMOJ 預設 padding */
+        margin-top: 0 !important;
+    }
+    #content-body {
+        margin: 0 !important;
+    }
+
+    /* 3. 主包裝容器優化 */
+    .oral-main-wrapper {
+        background-color: var(--oral-bg) !important;
+        color: var(--oral-text) !important;
+        min-height: calc(100vh - 50px); /* 扣除導覽列高度 */
+        padding: var(--oral-wrapper-padding) 20px;
+        position: relative;
+        z-index: 10;
+        font-family: "Segoe UI", "PingFang TC", "Microsoft JhengHei", sans-serif;
+    }
+
+    .oral-container {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    /* 4. 標題設計優化 */
+    .oral-title {
+        font-size: 2.2rem;
+        font-weight: 800;
+        border-bottom: 4px solid var(--oral-title-border);
+        padding-bottom: 15px;
+        margin-bottom: 40px;
+        color: var(--oral-text) !important;
+        letter-spacing: 1px;
+    }
+
+    /* 5. 按鈕列優化：增加響應式與間距控制 */
+    .button-row {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap; /* 手機版會自動換行 */
+        gap: 20px;
+    }
+
+    .pill-button {
+        flex: 1;
+        min-width: 150px; /* 確保按鈕不會縮太小 */
+        background: var(--oral-btn-bg);
+        border: 2px solid var(--oral-btn-border);
+        border-radius: 50px;
+        padding: 14px 24px;
+        text-align: center;
+        text-decoration: none !important;
+        color: var(--oral-btn-text) !important;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .pill-button:hover {
+        background: var(--oral-btn-hover-bg) !important;
+        border-color: var(--oral-btn-primary); /* 懸浮時邊框變藍色 */
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px var(--oral-btn-hover-shadow);
+    }
+
+    .pill-button:active {
+        transform: translateY(-1px);
+    }
+
+    /* 手機版微調 */
+    @media (max-width: 600px) {
+        .button-row {
+            flex-direction: column;
+        }
+        .pill-button {
+            width: 100%;
+        }
+    }
+</style>
+
+<div class="oral-main-wrapper">
+    <div class="oral-container" id="oral-app-root">
+        <h1 class="oral-title">口試系統</h1>
+
+        <div class="button-row">
+            <a href="#" class="pill-button">解題</a>
+            <a href="#" class="pill-button">模擬口試</a>
+            <a href="#" class="pill-button">口試登記</a>
+            <a href="#" class="pill-button">口試</a>
+            <a href="#" class="pill-button">結果查詢</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
